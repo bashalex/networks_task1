@@ -1,0 +1,38 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<div class="text-center">
+  <h1>Hello {{ user.username }}! | <a href="/logout" style="color: chartreuse">logout</a> </h1>
+</div>
+
+<br>
+
+<form action="/compute" method="POST">
+  {% if number_result %}
+  <div class="form-group text-center">
+    <h2 style="color: green">Result: {{ number_result }}</h2>
+  </div>
+  {% endif %}
+  <div class="form-group">
+    <input name="number" class="form-control input-lg" type="number" placeholder="Number to factorize" required>
+  </div>
+  <input type="submit" class="btn btn-primary btn-lg btn-block" value="Compute">
+</form>
+
+<br>
+<hr>
+
+<form action="/db_query" method="POST">
+  {% if query_result %}
+  <div class="form-group text-center">
+    <h2 style="color: green">Result: {{ query_result }}</h2>
+  </div>
+  {% endif %}
+  <div class="form-group">
+    <input name="query" class="form-control input-lg" type="text" placeholder="SQL Query" required>
+  </div>
+  <input type="submit" class="btn btn-primary btn-lg btn-block" value="Query">
+</form>
+
+{% endblock %}
